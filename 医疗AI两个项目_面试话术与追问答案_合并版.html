@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>医疗 AI 两个项目｜面试话术与追问答案合并版</title>
+  <style>
+    :root {
+      --bg: #f6f1e7;
+      --paper: #fffaf0;
+      --paper-2: #f1eadc;
+      --ink: #171a1f;
+      --muted: #66706a;
+      --line: #d8ceb9;
+      --teal: #0d7f7a;
+      --teal-dark: #075e5a;
+      --red: #bd3b2d;
+      --amber: #b27a16;
+      --green: #2d7653;
+      --blue: #295c9b;
+      --code: #11151a;
+      --code-ink: #e9f2eb;
+      --shadow: 0 18px 45px rgba(28, 31, 31, 0.12);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23, 26, 31, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(23, 26, 31, 0.03) 1px, transparent 1px),
+        var(--bg);
+      background-size: 36px 36px;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.72;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 292px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 28px 22px;
+      background: rgba(255, 250, 240, 0.94);
+      border-right: 1px solid var(--line);
+      overflow: auto;
+    }
+
+    .brand {
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .brand strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", "Microsoft YaHei", serif;
+      font-size: 28px;
+      line-height: 1.08;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav {
+      display: grid;
+      gap: 6px;
+      margin-top: 22px;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #2e3833;
+      font-size: 14px;
+      transition: 0.18s ease;
+    }
+
+    nav a:hover {
+      background: var(--paper-2);
+      transform: translateX(2px);
+    }
+
+    nav a::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex: 0 0 auto;
+    }
+
+    main { min-width: 0; }
+
+    section {
+      padding: 54px clamp(24px, 5vw, 78px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Microsoft YaHei", serif;
+      font-weight: 800;
+      line-height: 1.18;
+    }
+
+    h1 {
+      max-width: 820px;
+      font-size: clamp(36px, 5vw, 60px);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(28px, 3.2vw, 40px);
+      letter-spacing: -0.03em;
+    }
+
+    h3 { font-size: 22px; }
+    h4 { font-size: 18px; }
+
+    p { margin: 0; color: #354039; }
+    .lead { max-width: 820px; margin-top: 22px; font-size: 19px; }
+    .section-intro { max-width: 980px; margin-bottom: 24px; font-size: 16px; }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 240, 0.86);
+      box-shadow: 0 10px 28px rgba(28, 31, 31, 0.07);
+    }
+
+    .hero-card {
+      background: rgba(255, 250, 240, 0.92);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .metric {
+      min-height: 112px;
+      padding: 16px;
+      border-top: 4px solid var(--teal);
+      background: var(--paper);
+      box-shadow: 0 10px 25px rgba(28, 31, 31, 0.07);
+      border-radius: 10px;
+    }
+
+    .metric:nth-child(2) { border-color: var(--red); }
+    .metric:nth-child(3) { border-color: var(--amber); }
+    .metric:nth-child(4) { border-color: var(--green); }
+
+    .metric b {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .flow-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(28,31,31,.06);
+    }
+
+    .flow-node {
+      position: relative;
+      min-height: 132px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .flow-node:last-child { border-right: 0; }
+    .flow-node b { display: block; margin-bottom: 8px; color: var(--red); font-size: 13px; }
+    .flow-node span { display: block; font-size: 16px; font-weight: 800; }
+    .flow-node small { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    .qa-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    details.qa {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 20px rgba(28,31,31,.05);
+      overflow: hidden;
+    }
+
+    details.qa summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 800;
+      background: rgba(241, 234, 220, 0.68);
+      list-style: none;
+    }
+
+    details.qa summary::-webkit-details-marker { display: none; }
+    details.qa[open] summary { border-bottom: 1px solid var(--line); }
+    details.qa .answer { padding: 18px; }
+    details.qa .answer p + p { margin-top: 10px; }
+
+    .script-box {
+      padding: 22px;
+      border-left: 6px solid var(--teal);
+      border-radius: 12px;
+      background: var(--paper);
+      box-shadow: 0 12px 28px rgba(28,31,31,.07);
+    }
+
+    .script-box.danger { border-color: var(--red); }
+    .script-box.amber { border-color: var(--amber); }
+    .script-box.green { border-color: var(--green); }
+    .script-box.blue { border-color: var(--blue); }
+    .script-box p + p { margin-top: 10px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 10px 25px rgba(28,31,31,.05);
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--ink);
+      color: #fffaf0;
+      font-weight: 800;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #3a443f;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      border-radius: 10px;
+      background: var(--code);
+      color: var(--code-ink);
+      font-size: 13px;
+      line-height: 1.62;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    code {
+      font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+    }
+
+    pre code {
+      display: block;
+      padding: 16px;
+      min-width: 620px;
+    }
+
+    .inline-code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #ebe0cc;
+      font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
+    .warning {
+      padding: 16px 18px;
+      border: 1px solid rgba(189, 59, 45, .35);
+      border-left: 5px solid var(--red);
+      border-radius: 12px;
+      background: #fff2ed;
+    }
+
+    .success {
+      padding: 16px 18px;
+      border: 1px solid rgba(45, 118, 83, .35);
+      border-left: 5px solid var(--green);
+      border-radius: 12px;
+      background: #edf8f1;
+    }
+
+    .numbered {
+      counter-reset: item;
+      display: grid;
+      gap: 14px;
+    }
+
+    .numbered article {
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,250,240,.86);
+    }
+
+    .numbered article::before {
+      counter-increment: item;
+      content: counter(item, decimal-leading-zero);
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fffaf0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .print-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 28px clamp(24px, 5vw, 78px);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .layout, .hero, .two-col, .three-col { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow-strip { grid-template-columns: 1fr; }
+      .flow-node { border-right: 0; border-bottom: 1px solid var(--line); }
+      .flow-node:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 680px) {
+      section { padding: 40px 18px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .numbered article { grid-template-columns: 1fr; }
+      pre code { min-width: 420px; }
+    }
+
+    @media print {
+      aside { display: none; }
+      .layout { display: block; }
+      section { page-break-inside: avoid; }
+      body { background: white; }
+      .card, .script-box, details.qa, table { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <strong>医疗 AI<br>双项目面试稿</strong>
+        <span>挂号助手 + 智能问诊分诊系统｜话术优化、追问答案、拷问清单</span>
+      </div>
+      <nav aria-label="页面导航">
+        <a href="#overview">总览</a>
+        <a href="#one-minute">总开场话术</a>
+        <a href="#project-a">项目一：挂号助手</a>
+        <a href="#project-a-qa">挂号助手追问答案</a>
+        <a href="#project-b">项目二：问诊分诊系统</a>
+        <a href="#project-b-qa">分诊系统追问答案</a>
+        <a href="#compare">两个项目怎么区分</a>
+        <a href="#danger-phrases">危险表达替换</a>
+        <a href="#hard-questions">严厉拷问清单</a>
+        <a href="#final-script">最终背诵版</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="hero" id="overview">
+        <div>
+          <div class="eyebrow">INTERVIEW DEFENSE PAGE</div>
+          <h1>两个医疗 AI 项目，统一讲成一条可信的工程化主线</h1>
+          <p class="lead">
+            这份页面把你的两个项目合并成一个可直接复习的面试网页：
+            <strong>智能医疗挂号 / 预问诊助手</strong> 负责讲 Dify、Coze、RAG、知识库、规则引擎；
+            <strong>AI 智能问诊分诊系统</strong> 负责讲数据工程、RoBERTa、RexUniNLU、知识蒸馏和置信度路由。
+          </p>
+          <div class="metric-grid" aria-label="核心数字">
+            <div class="metric"><b>2</b><span>两个项目要分开讲，不要混成一个项目。</span></div>
+            <div class="metric"><b>25 万+</b><span>问诊文本数据规模，用于分诊模型项目。</span></div>
+            <div class="metric"><b>0.8497</b><span>RoBERTa 24 类测试集 Macro F1。</span></div>
+            <div class="metric"><b>0.9971</b><span>RexUniNLU 20 类子任务测试集 Macro F1。</span></div>
+          </div>
+        </div>
+
+        <article class="card hero-card">
+          <h3>你面试时的核心策略</h3>
+          <p style="margin-top:12px;">
+            不要把两个项目都讲成“我用了大模型”。要明确区分：
+            第一个项目偏<strong>大模型应用编排和知识库问答</strong>，第二个项目偏<strong>小模型训练、评估、蒸馏和级联路由</strong>。
+          </p>
+          <div class="tag-list">
+            <span class="tag">Coze / Dify</span>
+            <span class="tag">RAGFlow</span>
+            <span class="tag">RoBERTa-wwm-ext</span>
+            <span class="tag">RexUniNLU</span>
+            <span class="tag">知识蒸馏</span>
+            <span class="tag">置信度路由</span>
+            <span class="tag">医疗风险控制</span>
+          </div>
+          <div class="warning" style="margin-top:18px;">
+            <strong>严厉提醒：</strong>“核心工作、海量文档、显著提升、稳定支持”这些词都能用，但必须有边界。没有指标就不要说“准确率提升多少”，没有上线数据就不要说“大规模稳定运行”。
+          </div>
+        </article>
+      </section>
+
+      <section id="one-minute">
+        <h2>总开场话术：先把两个项目摆清楚</h2>
+        <p class="section-intro">
+          面试开场不要直接堆技术名词。先说业务，再说你做了什么，最后说两个项目之间的关系。
+        </p>
+        <div class="script-box green">
+          <h3>推荐 90 秒版本</h3>
+          <p style="margin-top:12px;">
+            面试官好，我是张宇辉，今年应届本科毕业，软件工程专业。从大四开始，我在四川一维科技有限公司担任 AI 应用开发实习生，主要参与医疗 AI 方向的两个项目。
+          </p>
+          <p>
+            第一个项目是智能医疗挂号 / 预问诊助手，偏大模型应用落地。我主要参与基于 Coze、Dify 的对话流程搭建，以及 RAG 知识库接入。项目里会把科室介绍、医生专长、常见疾病与科室关系、药品说明、急救知识等资料整理成知识库，让系统在回答挂号和预问诊问题时先检索资料，再结合大模型生成回复，从而提升回答的相关性和可控性。
+          </p>
+          <p>
+            第二个项目是 AI 智能问诊分诊系统，偏模型训练和工程化链路。这个项目的目标是根据用户症状文本预测推荐科室。我主要负责数据工程和模型链路设计，包括约 25 万条问诊文本清洗、标签冲突处理、长尾科室补齐，使用 RoBERTa-wwm-ext 训练 24 类科室分类器，并用 6 层学生模型做知识蒸馏；同时引入 RexUniNLU 做尾部科室二次判断，最后通过 RoBERTa、RexUniNLU、LLM 的置信度级联路由，兼顾速度、准确率和医疗风险控制。
+          </p>
+        </div>
+      </section>
+
+      <section id="project-a">
+        <h2>项目一：智能医疗挂号 / 预问诊助手</h2>
+        <p class="section-intro">
+          这个项目的关键词是：<strong>Coze / Dify、RAG、知识库、意图识别、条件分支、规则引擎、免责声明</strong>。不要把它讲成“训练了一个模型”，它更像大模型应用编排和医疗知识库问答项目。
+        </p>
+
+        <div class="two-col">
+          <article class="script-box">
+            <h3>稳妥版项目介绍</h3>
+            <p style="margin-top:12px;">
+              这个项目面向医院导诊和互联网医疗预问诊场景，主要解决患者挂号前表达不清、科室选择困难、药品和急救知识查询不方便的问题。我的工作主要集中在 Coze / Dify 对话流程搭建、医疗知识库接入、意图分支配置和高危规则提示。
+            </p>
+            <p>
+              技术上，我基于 RAG 思路，把科室介绍、医生专长、常见疾病与科室关系、药品说明书、急救知识等资料整理成知识库。用户输入问题后，系统先判断意图，再检索相关资料，最后让大模型基于召回内容生成回答。这样相比直接让大模型自由回答，更可控，也能降低幻觉风险。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>这个项目你应该强调什么</h3>
+            <ul>
+              <li>你不是只“点点平台”，而是参与了<strong>医疗业务流程拆分</strong>。</li>
+              <li>你不是说“RAG 提升准确率”，而是说<strong>提升回答相关性、可控性、可追溯性</strong>。</li>
+              <li>你不是让系统“诊断疾病”，而是定位为<strong>导诊辅助、用药信息查询、风险提示</strong>。</li>
+              <li>高危症状优先规则触发，例如胸痛、呼吸困难、意识模糊。</li>
+              <li>所有医疗建议要追加免责声明，不替代医生诊断。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div style="margin-top:22px;" class="flow-strip" aria-label="挂号助手流程">
+          <div class="flow-node"><b>Step 1</b><span>用户输入</span><small>症状、挂号问题、药品问题、费用问题、急救问题。</small></div>
+          <div class="flow-node"><b>Step 2</b><span>意图识别</span><small>Dify / Coze LLM 节点判断用户问题类型。</small></div>
+          <div class="flow-node"><b>Step 3</b><span>知识库检索</span><small>RAGFlow / Dify 知识库召回相关科室、药品、急救资料。</small></div>
+          <div class="flow-node"><b>Step 4</b><span>规则引擎</span><small>高危症状触发急诊 / 120 提示；结构化问题查 MySQL。</small></div>
+          <div class="flow-node"><b>Step 5</b><span>LLM 回复</span><small>基于召回内容生成可读回答，并追加免责声明。</small></div>
+        </div>
+
+        <div style="margin-top:22px;" class="warning">
+          <strong>不要这样讲：</strong>“我引入 RAG，显著提升了准确率，已为三甲医院稳定运行。”<br>
+          <strong>建议改成：</strong>“我基于 RAG 思路接入医疗知识库，提升了回答相关性和可控性；该方案用于四川某三甲医院相关业务的技术支持或演示验证。”
+        </div>
+      </section>
+
+      <section id="project-a-qa">
+        <h2>项目一追问答案：挂号助手 / RAG / Dify</h2>
+        <div class="qa-list">
+          <details class="qa" open>
+            <summary>1. 你说用了 RAG，完整流程是什么？</summary>
+            <div class="answer">
+              <p>用户输入后，系统先判断意图，比如是科室推荐、药品说明、费用查询还是急救知识。然后根据用户问题去对应知识库里检索相关片段，比如科室介绍、医生专长、疾病与科室关系、药品用法禁忌等。</p>
+              <p>检索到资料后，系统会把用户问题和召回内容一起放入 prompt，让大模型基于资料回答，而不是自由发挥。最后输出时会加免责声明；如果检测到胸痛、呼吸困难、意识模糊这类高危信号，则优先提示急诊或 120。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>2. 为什么不用大模型直接回答？</summary>
+            <div class="answer">
+              <p>医疗场景对准确性和可控性要求更高。直接让大模型回答，容易出现幻觉，比如编造医生信息、错误推荐科室、给出不合规用药建议。</p>
+              <p>RAG 的作用是先检索医院或业务方已有资料，再让大模型基于资料生成回答。这样回答范围更可控，也方便后续追溯问题来源。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>3. 知识库里放了什么？怎么组织？</summary>
+            <div class="answer">
+              <p>主要包括科室介绍、医生专长、常见疾病与科室关系、药品说明书、急救知识、挂号说明等资料。组织时会尽量按业务类型分库，比如科室推荐知识库、药品说明书库、急救知识库，避免不同类型资料互相干扰。</p>
+              <p>例如用户问“牙痛挂什么科”，系统优先召回口腔科、牙体牙髓、口腔颌面相关资料；用户问“布洛芬怎么吃”，则进入药品说明知识库，重点输出用法、禁忌、最大剂量和注意事项。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>4. 用户只说“肚子疼”，你怎么处理？</summary>
+            <div class="answer">
+              <p>这种属于信息不足，不应该直接给确定科室。系统应该追问疼痛部位、持续时间、是否伴随发热、呕吐、腹泻、便血、怀孕可能等信息。</p>
+              <p>如果用户描述里出现持续剧烈腹痛、意识异常、呕血便血等危险信号，就优先提示急诊，而不是继续普通挂号推荐。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>5. 面试官问“准确率提升多少”，没有数据怎么办？</summary>
+            <div class="answer">
+              <p>不要硬编数字。可以说：这个项目更多是应用流程验证，不是严格模型评测。我主要从问答相关性和业务可用性角度验证，比如典型挂号问题能否召回正确资料、回答是否符合科室知识、是否触发高危规则。</p>
+              <p>如果要正式量化，我会建立标准测试集，用检索命中率、回答相关性、人工评估通过率、高危规则召回率来衡量，而不是简单说“准确率提升多少”。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>6. Coze 和 Dify 你具体做了什么？</summary>
+            <div class="answer">
+              <p>我主要做的是对话流程配置和节点编排，包括 LLM 意图识别节点、条件分支、知识库检索节点、结构化查询节点和回复节点。还会根据业务场景配置不同 prompt，让系统在不同意图下走不同路径。</p>
+              <p>例如药品类问题走药品知识库，科室推荐问题走科室知识库，价格类问题走 MySQL 服务价格表，高危症状直接触发规则提示。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="project-b">
+        <h2>项目二：AI 智能问诊分诊系统</h2>
+        <p class="section-intro">
+          这个项目的关键词是：<strong>数据工程、长尾分类、RoBERTa-wwm-ext、RexUniNLU、知识蒸馏、置信度路由、LLM fallback</strong>。这是你真正体现“AI 应用开发 + 模型链路理解”的核心项目。
+        </p>
+
+        <div class="script-box blue">
+          <h3>稳妥版项目介绍</h3>
+          <p style="margin-top:12px;">
+            这个项目面向医院导诊和互联网医疗场景，目标是根据用户症状文本预测推荐科室，并生成专家式健康建议。项目难点主要是医疗文本表达不标准、科室类别长尾严重，以及低置信度误分诊风险高。
+          </p>
+          <p>
+            我的工作主要集中在数据工程和模型链路设计。数据上，我处理约 25 万条问诊文本，做清洗、去重、标签冲突处理、科室名防泄漏，并针对小样本科室做补齐。模型上，我用 RoBERTa-wwm-ext 训练 24 类科室分类器，并设计 6 层学生模型做知识蒸馏；同时把 20 个低资源科室改写成 RexUniNLU schema-driven 格式做二次判断。最后通过置信度路由，把 RoBERTa、RexUniNLU 和 LLM 串起来，兼顾速度、准确率和医疗安全边界。
+          </p>
+        </div>
+
+        <div style="margin-top:22px;" class="metric-grid">
+          <div class="metric"><b>58 类</b><span>原始业务覆盖科室，长尾明显。</span></div>
+          <div class="metric"><b>24 类</b><span>RoBERTa 教师分类器覆盖头部 / 腰部科室。</span></div>
+          <div class="metric"><b>20 类</b><span>RexUniNLU 微调覆盖低资源科室子任务。</span></div>
+          <div class="metric"><b>6 层</b><span>学生模型保留一半 Transformer 层。</span></div>
+        </div>
+
+        <div style="margin-top:22px;" class="numbered">
+          <article>
+            <div>
+              <h3>数据工程</h3>
+              <p>清洗约 25 万条问诊文本，处理空文本、重复样本、标签冲突样本、科室名泄漏，并针对长尾科室做补齐。评价时重点看 Macro F1，而不是只看 Accuracy。</p>
+              <div class="tag-list"><span class="tag">25 万+</span><span class="tag">58 类长尾</span><span class="tag">防泄漏</span><span class="tag">Macro F1</span></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>RoBERTa 主分类器</h3>
+              <p>使用 RoBERTa-wwm-ext 做 24 类科室分类器，输入症状文本，输出科室 logits，通过 softmax 得到候选科室和工程置信度。测试集 Macro F1 为 0.8497。</p>
+              <div class="tag-list"><span class="tag">RoBERTa-wwm-ext</span><span class="tag">24 类</span><span class="tag">0.8497 Macro F1</span></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>知识蒸馏</h3>
+              <p>把 12 层教师模型压缩成 6 层学生模型，通过 hard label、soft label 和 hidden state 对齐保留教师知识，目标是降低线上推理成本。</p>
+              <div class="tag-list"><span class="tag">T=4.0</span><span class="tag">ALPHA=0.5</span><span class="tag">BETA=0.3</span><span class="tag">hidden MSE</span></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>RexUniNLU 二次判断</h3>
+              <p>将 20 个低资源科室分类任务改写为 schema-driven JSONL 格式，用 <span class="inline-code">[CLASSIFY]</span>、<span class="inline-code">info_list</span> 和 <span class="inline-code">schema</span> 表达分类任务。测试集 2400 条，Macro F1 为 0.9971。</p>
+              <div class="tag-list"><span class="tag">20 类</span><span class="tag">2400 测试样本</span><span class="tag">0.9971 Macro F1</span><span class="tag">schema-driven</span></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>置信度路由</h3>
+              <p>RoBERTa 置信度达到 0.7~1 才采纳；否则进入 RexUniNLU；RexUniNLU 置信度达到 0.95~1 才采纳；两者都不满足时进入 LLM fallback。</p>
+              <div class="tag-list"><span class="tag">0.7~1</span><span class="tag">0.95~1</span><span class="tag">LLM fallback</span><span class="tag">风险控制</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top:22px;" class="flow-strip" aria-label="分诊系统流程">
+          <div class="flow-node"><b>Input</b><span>症状文本</span><small>用户输入自然语言症状描述。</small></div>
+          <div class="flow-node"><b>Layer 1</b><span>RoBERTa 学生模型</span><small>快速输出候选科室，0.7~1 采纳。</small></div>
+          <div class="flow-node"><b>Layer 2</b><span>RexUniNLU</span><small>对低置信度或尾部科室做二次判断，0.95~1 采纳。</small></div>
+          <div class="flow-node"><b>Layer 3</b><span>LLM fallback</span><small>信息不足、跨科室、低置信度场景进入兜底。</small></div>
+          <div class="flow-node"><b>Output</b><span>科室 + 建议</span><small>输出推荐科室、置信度、风险提示和免责声明。</small></div>
+        </div>
+      </section>
+
+      <section id="project-b-qa">
+        <h2>项目二追问答案：数据、模型、蒸馏、路由</h2>
+        <div class="qa-list">
+          <details class="qa" open>
+            <summary>1. 为什么选 RoBERTa-wwm-ext？</summary>
+            <div class="answer">
+              <p>因为它适合中文短文本语义理解。wwm 是 whole word masking，也就是整词 Mask。中文医疗症状里很多词是多字词，比如“呼吸困难”“胸口疼”“关节疼痛”，整词 Mask 比单字 Mask 更能帮助模型学习词级语义。</p>
+              <p>项目里 RoBERTa 承担头部和腰部科室的快速分类，结构是 RoBERTa 主干加线性分类头，优点是稳定、推理快、工程实现简单。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>2. 为什么强调 Macro F1，而不是 Accuracy？</summary>
+            <div class="answer">
+              <p>因为医疗科室分类是典型长尾任务。如果只看 Accuracy，模型把头部科室分好，整体指标就可能很好看，但尾部科室可能完全错。Macro F1 是对每个类别分别计算 F1 后再平均，更能反映尾部类别表现。</p>
+              <p>所以我会用 Accuracy 看整体命中率，用 Macro F1 判断模型是否照顾到低频科室。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>3. 标签冲突怎么处理？</summary>
+            <div class="answer">
+              <p>同一条症状文本如果对应多个不同科室，就属于标签冲突。这类样本会给模型互相矛盾的监督信号。处理方式是先用文本归一化后分组，检查同文本不同标签的情况；如果有人工条件，优先复核；如果没有，就先删除这类样本，保证训练信号干净。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>4. 为什么要做科室名防泄漏？</summary>
+            <div class="answer">
+              <p>因为真实用户通常不会说“我要挂骨科”，而是说“膝盖疼、走路疼”。如果训练文本里直接出现科室名，模型会记住捷径，导致测试指标虚高，但真实场景泛化差。</p>
+              <p>所以要清理“骨科、眼科、皮肤科”等科室名直出内容，让模型更多依据症状、部位、伴随表现来判断。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>5. RexUniNLU 的 schema-driven 是什么意思？</summary>
+            <div class="answer">
+              <p>schema-driven 的意思是：任务由 schema 定义，模型根据输入文本和 schema 判断输出类型。我们把传统分类任务改写成识别 <span class="inline-code">[CLASSIFY]</span> 这个 span 属于哪个科室类型。</p>
+              <p>每条样本里会有 <span class="inline-code">text</span>、<span class="inline-code">info_list</span> 和 <span class="inline-code">schema</span>。schema 里列出 20 个候选科室，info_list 里标注正确科室。这样 RexUniNLU 就能把分类任务当成统一信息抽取任务来微调。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>6. RexUniNLU 指标 0.9971 会不会太高？怎么解释？</summary>
+            <div class="answer">
+              <p>会被质疑，所以不能把它说成全场景效果。正确解释是：这是针对筛选出的 20 个低资源科室子任务，测试集 2400 条，每类约 120 条，部分类别语义锚点比较明确，所以指标很高。</p>
+              <p>它不等价于全 58 类真实场景效果。真实系统里仍然保留 RoBERTa + RexUniNLU + LLM 的级联路由，就是为了应对全量分布、模糊症状和跨科室表达。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>7. 知识蒸馏三种 loss 怎么讲？</summary>
+            <div class="answer">
+              <p>hard label loss 是学生模型和真实标签之间的交叉熵，让学生学习标准答案。</p>
+              <p>soft label loss 是学生 logits 和教师 logits 之间的 KL 散度，通过 temperature 让教师输出分布更平滑，学生可以学到类间相似度。</p>
+              <p>hidden state loss 是学生隐层表示和教师隐层表示之间的 MSE。项目里学生第 i 层对齐教师第 2i+1 层的 [CLS] 表示，让学生不仅学输出，也学中间语义表达。</p>
+              <pre style="margin-top:14px;"><code>loss = ALPHA * loss_hard + (1 - ALPHA) * loss_soft + BETA * loss_hid</code></pre>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>8. 你的置信度路由逻辑是什么？</summary>
+            <div class="answer">
+              <p>第一层先调用 RoBERTa 学生模型，如果它的 softmax 最大概率在 0.7~1，就采纳对应科室；如果低于 0.7，不直接输出，进入 RexUniNLU。</p>
+              <p>第二层 RexUniNLU 独立计算自己的置信度，只有 0.95~1 才采纳。这个阈值更高，是因为医疗误分诊成本高，尾部类复核必须更谨慎。</p>
+              <p>第三层，如果两个模型都不满足阈值，就进入 LLM fallback，让 LLM 做进一步询问、解释和风险提示，而不是强行输出一个低可信度科室。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>9. softmax 最大概率能直接当置信度吗？</summary>
+            <div class="answer">
+              <p>严格来说不能完全等同。softmax 最大概率只是模型输出分布下的工程置信度信号，模型可能过度自信。</p>
+              <p>所以面试时要说：项目里先用 softmax 最大概率作为路由信号，但更完善的做法是用验证集做置信度校准，例如统计不同置信度区间的真实准确率，或者做 temperature scaling。</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary>10. “胸口疼，喘不过气”怎么走完整流程？</summary>
+            <div class="answer">
+              <p>用户输入后，系统先做基础预处理，然后优先走高危规则判断。因为“胸口疼”和“喘不过气”属于高风险信号，不能直接只推荐心内科。</p>
+              <p>正常分类链路会先进入 RoBERTa，如果置信度达标则得到候选科室；不达标则进入 RexUniNLU；再不达标进入 LLM fallback。但这个例子中，高危规则优先级应该高于普通分诊输出。最终回答应提示：当前症状存在急症可能，建议立即前往急诊或拨打 120，同时说明可能涉及心内科、呼吸科等方向，但不能替代医生诊断。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="compare">
+        <h2>两个项目怎么区分，怎么串成一条线</h2>
+        <p class="section-intro">
+          面试官最怕你把两个项目讲乱。下面这张表要背熟：一个是<strong>应用编排型项目</strong>，一个是<strong>模型训练与系统路由型项目</strong>。
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>项目一：智能医疗挂号 / 预问诊助手</th>
+              <th>项目二：AI 智能问诊分诊系统</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>项目定位</td>
+              <td>大模型应用编排、知识库问答、医疗导诊辅助</td>
+              <td>症状文本分类、科室预测、模型级联路由</td>
+            </tr>
+            <tr>
+              <td>核心技术</td>
+              <td>Coze、Dify、RAGFlow、知识库检索、规则引擎、MySQL 查询</td>
+              <td>RoBERTa-wwm-ext、RexUniNLU、PyTorch、知识蒸馏、置信度路由</td>
+            </tr>
+            <tr>
+              <td>你负责什么</td>
+              <td>对话流、意图分支、知识库接入、提示词、风险规则、前端展示接入</td>
+              <td>数据清洗、长尾处理、模型训练、RexUniNLU 格式转换、蒸馏方案、路由策略</td>
+            </tr>
+            <tr>
+              <td>面试亮点</td>
+              <td>能把 LLM 工具链落到医疗业务流程里，并知道医疗回答边界</td>
+              <td>能讲清楚数据、模型、指标、压缩、路由和工程化取舍</td>
+            </tr>
+            <tr>
+              <td>最大风险</td>
+              <td>被认为只是“配置平台”，没有技术深度</td>
+              <td>被追问模型细节、指标可信度、阈值来源、蒸馏公式</td>
+            </tr>
+            <tr>
+              <td>稳妥讲法</td>
+              <td>强调 RAG 流程、知识组织、意图分支、幻觉控制</td>
+              <td>强调长尾数据、Macro F1、蒸馏三重 loss、置信度级联</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="success" style="margin-top:22px;">
+          <strong>串联方式：</strong>第一个项目证明你会做 LLM 应用落地；第二个项目证明你理解模型训练和工程化部署。两个项目合起来，你的人设就是“懂医疗业务场景、能用平台快速落地，也能理解数据和模型链路的 AI 应用开发实习生”。
+        </div>
+      </section>
+
+      <section id="danger-phrases">
+        <h2>危险表达替换表</h2>
+        <p class="section-intro">这些替换是为了避免面试官一追问就把你打穿。不要乱夸，讲边界反而更可信。</p>
+        <table>
+          <thead>
+            <tr>
+              <th>不要这样说</th>
+              <th>风险</th>
+              <th>建议这样说</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>我负责核心工作</td>
+              <td>面试官会追问哪些模块你独立完成</td>
+              <td>我主要参与对话流程、知识库接入、数据处理和模型链路设计</td>
+            </tr>
+            <tr>
+              <td>海量非结构化文档</td>
+              <td>会被问具体数量、大小、清洗方式</td>
+              <td>科室介绍、医生专长、疾病与科室关系等非结构化资料</td>
+            </tr>
+            <tr>
+              <td>显著提升准确率</td>
+              <td>会被问从多少到多少、怎么评估</td>
+              <td>提升回答相关性和可控性，降低直接生成的幻觉风险</td>
+            </tr>
+            <tr>
+              <td>RexUniNLU 准确率 99.71%，所以系统很准</td>
+              <td>指标太高，容易被质疑数据泄漏或测试集简单</td>
+              <td>这是 20 类低资源子任务结果，不等于全 58 类真实场景效果</td>
+            </tr>
+            <tr>
+              <td>softmax 就是置信度</td>
+              <td>技术表达不严谨</td>
+              <td>softmax 最大概率是工程置信度信号，严格还需要校准</td>
+            </tr>
+            <tr>
+              <td>系统可以给诊断建议</td>
+              <td>医疗合规风险</td>
+              <td>系统只做导诊辅助、风险提示和信息查询，不能替代医生诊断</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="hard-questions">
+        <h2>严厉面试官拷问清单</h2>
+        <div class="three-col">
+          <article class="card">
+            <h3>项目一必问</h3>
+            <ul>
+              <li>你在 Dify / Coze 里具体配置了哪些节点？</li>
+              <li>RAG 的 chunk size、top-k、召回策略怎么定？</li>
+              <li>知识库资料怎么清洗？有没有过期问题？</li>
+              <li>怎么避免大模型胡说八道？</li>
+              <li>高危症状规则有哪些？优先级怎么设计？</li>
+              <li>没有准确率指标，怎么证明项目有效？</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>项目二必问</h3>
+            <ul>
+              <li>为什么选 RoBERTa-wwm-ext？</li>
+              <li>数据清洗前后分别多少条？</li>
+              <li>标签冲突怎么定义？</li>
+              <li>为什么 Macro F1 比 Accuracy 更重要？</li>
+              <li>RexUniNLU 的 schema 怎么写？</li>
+              <li>0.9971 指标为什么这么高？</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>高级追问</h3>
+            <ul>
+              <li>蒸馏的 KL 散度公式怎么讲？</li>
+              <li>12 层教师如何对齐 6 层学生？</li>
+              <li>softmax 置信度是否校准？</li>
+              <li>阈值 0.7 和 0.95 怎么来的？</li>
+              <li>如果两个模型结果冲突怎么办？</li>
+              <li>新增一个科室怎么更新系统？</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="final-script">
+        <h2>最终背诵版：两个项目合并讲述</h2>
+        <p class="section-intro">这一段适合你在面试中讲完整项目经历。尽量讲自然，不要一字不差背稿。</p>
+        <div class="script-box green">
+          <p>
+            我在实习期间主要参与了两个医疗 AI 项目。第一个是智能医疗挂号 / 预问诊助手，偏大模型应用落地；第二个是 AI 智能问诊分诊系统，偏模型训练和工程化路由。
+          </p>
+          <p>
+            第一个项目里，我主要参与 Coze、Dify 对话流程搭建和 RAG 知识库接入。我们把科室介绍、医生专长、疾病与科室关系、药品说明和急救知识整理成知识库，用户提问后先识别意图，再检索相关资料，最后由大模型基于资料生成回复。这样做不是为了让大模型直接诊断，而是让它作为导诊辅助工具，提升回答相关性和可控性，并通过高危规则和免责声明控制医疗风险。
+          </p>
+          <p>
+            第二个项目是智能问诊分诊系统，目标是根据用户症状文本预测推荐科室。这个项目里我重点做了数据工程和模型链路设计。数据上处理约 25 万条问诊文本，包括去空文本、去重、标签冲突处理、科室名防泄漏和长尾科室补齐。模型上用 RoBERTa-wwm-ext 做 24 类科室分类器，测试集 Macro F1 是 0.8497；为了提升部署效率，又做了 6 层学生模型蒸馏，用 hard label、soft label 和 hidden state 对齐保留教师知识。
+          </p>
+          <p>
+            对于低资源科室，我引入 RexUniNLU 做二次判断，把 20 类任务改写成 schema-driven JSONL 格式，通过 [CLASSIFY]、info_list 和 schema 表达分类任务，测试集 Macro F1 是 0.9971。不过我会把这个结果限定为 20 类低资源子任务，不会等同于全 58 类真实场景效果。
+          </p>
+          <p>
+            最后系统采用三级置信度路由：RoBERTa 置信度达到 0.7 以上才采纳；否则进入 RexUniNLU，RexUniNLU 达到 0.95 以上才采纳；两个模型都不满足时，进入 LLM fallback 做进一步询问和风险提示。这个设计的核心是让每个模型只在自己足够确定的场景输出，从而兼顾高频场景速度、尾部科室覆盖和医疗安全边界。
+          </p>
+        </div>
+
+        <div class="print-note">
+          建议打印或导出 PDF 前先折叠/展开你想复习的问答模块；浏览器里按 Ctrl+P 可以直接打印。
+        </div>
+      </section>
+
+      <footer>
+        医疗 AI 双项目面试复习页｜生成用于面试话术整理、追问答案背诵和项目边界校准。
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
